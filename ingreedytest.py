@@ -10,6 +10,7 @@ def test_amounts():
     assert Ingreedy().parse('1.5 potatoes')['amount'] == 1.5
     assert Ingreedy().parse('.5 potatoes')['amount'] == 0.5
     assert Ingreedy().parse('12oz potatoes')['amount'] == 12
+    assert Ingreedy().parse('12g potatoes')['amount'] == 12
     assert Ingreedy().parse("1 cup flour")['amount'] == 1
     assert Ingreedy().parse("one cup flour")['amount'] == 1
     assert Ingreedy().parse("a cup of flour")['amount'] == 1
