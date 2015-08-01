@@ -32,7 +32,7 @@ def test_unit():
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
     assert Ingreedy().parse('12345 potatoes')['unit'] == None
     assert Ingreedy().parse('1/2 potato')['unit'] == None
-    # assert Ingreedy().parse('1 1/2 potatoes')['unit'] == None
+    assert Ingreedy().parse('1 1/2 potatoes')['unit'] == None
     # assert Ingreedy().parse('5 3/4 pinches potatoes')['unit'] == 'pinch'
     # assert Ingreedy().parse('1.5 potatoes')['unit'] == None
     # assert Ingreedy().parse('.5 potatoes')['unit'] == None
