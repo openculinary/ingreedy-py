@@ -42,13 +42,13 @@ class Ingreedy(NodeVisitor):
         self.res = {
             'unit': None,
             'unit_type': None,
-            'amount': 1,
+            'amount': None,
             'ingredient': None
         }
 
     grammar = Grammar(
         """
-        ingredient_addition = amount space? container? (unit)? space? ingredient?
+        ingredient_addition = amount? space? container? (unit)? space? ingredient?
 
         amount
         = float
@@ -296,6 +296,8 @@ class Ingreedy(NodeVisitor):
         return float(node.text)
 
     def visit_amount(self, node, visited_children):
+        if not self.res['amount']:
+            self.res['amount'] = 1
         self.res['amount'] *= sum(visited_children)
 
     def visit_ingredient_addition(self, node, visited_children):

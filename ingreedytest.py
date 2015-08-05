@@ -30,6 +30,7 @@ def test_amounts():
     assert Ingreedy().parse("12oz tequila")['amount'] == 12
     assert Ingreedy().parse("2 eggs, beaten")['amount'] == 2
     assert Ingreedy().parse("1 clove garlic, minced")['amount'] == 1
+    assert Ingreedy().parse("ground black pepper to taste")['amount'] == None
 
 def test_unit():
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
