@@ -62,7 +62,7 @@ class Ingreedy(NodeVisitor):
         / ~"[\t]"
 
         ingredient
-        = (word comma? (space word)*)
+        = (word (comma? space word)*)
 
         container = open? amount space? unit close?
 
