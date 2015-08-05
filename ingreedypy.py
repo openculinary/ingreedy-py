@@ -62,7 +62,7 @@ class Ingreedy(NodeVisitor):
         / ~"[\t]"
 
         ingredient
-        = (word (space word)*)
+        = (word comma? (space word)*)
 
         container = open? amount space? unit close?
 
@@ -86,6 +86,9 @@ class Ingreedy(NodeVisitor):
 
         letter
         = ~"[a-zA-Z]"
+
+        comma
+        = ","
 
         unit
         = (english_unit !letter)

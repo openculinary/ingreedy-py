@@ -15,7 +15,7 @@ test.run_tests = run_tests
 setup(
     name='ingreedypy',
     py_modules=['ingreedypy'],
-    version='0.5',
+    version='0.6',
     description='ingreedy-py parses recipe ingredient lines into a object',
     author='Scott Cooper',
     author_email='scttcper@gmail.com',

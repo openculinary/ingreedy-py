@@ -28,6 +28,7 @@ def test_amounts():
     assert Ingreedy().parse("1/2 cups flour")['amount'] == 0.5
     assert Ingreedy().parse(".25 cups flour")['amount'] == 0.25
     assert Ingreedy().parse("12oz tequila")['amount'] == 12
+    assert Ingreedy().parse("2 eggs, beaten")['amount'] == 2
 
 def test_unit():
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
