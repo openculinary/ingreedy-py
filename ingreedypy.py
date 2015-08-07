@@ -49,7 +49,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = amount? space? container? (unit)? space? ingredient?
+        ingredient_addition = amount? space? (unit)? space? container? (unit)? space? ingredient?
 
         amount
         = float
@@ -273,16 +273,19 @@ class Ingreedy(NodeVisitor):
         self.res['ingredient'] = text
 
     def visit_imprecise_unit(self, node, visited_children):
-        self.res['unit'] = node.children[0].expr_name
-        self.res['unit_type'] = 'imprecise'
+        if not self.res['unit']:
+            self.res['unit'] = node.children[0].expr_name
+            self.res['unit_type'] = 'imprecise'
 
     def visit_metric_unit(self, node, visited_children):
-        self.res['unit'] = node.children[0].expr_name
-        self.res['unit_type'] = 'metric'
+        if not self.res['unit']:
+            self.res['unit'] = node.children[0].expr_name
+            self.res['unit_type'] = 'metric'
 
     def visit_english_unit(self, node, visited_children):
-        self.res['unit'] = node.children[0].expr_name
-        self.res['unit_type'] = 'english'
+        if not self.res['unit']:
+            self.res['unit'] = node.children[0].expr_name
+            self.res['unit_type'] = 'english'
 
     def visit_integer(self, node, visited_children):
         return int(node.text)

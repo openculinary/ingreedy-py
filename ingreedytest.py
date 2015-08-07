@@ -33,8 +33,11 @@ def test_amounts():
     assert Ingreedy().parse("ground black pepper to taste")['amount'] == None
     assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['amount'] == 1
     assert Ingreedy().parse("12 (6-ounce) boneless skinless chicken breasts")['amount'] == 12
+    assert Ingreedy().parse("1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market")['amount'] == 1
+
 
 def test_unit():
+    assert Ingreedy().parse("1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market")['unit'] == 'tablespoon'
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
     assert Ingreedy().parse('12345 potatoes')['unit'] == None
     assert Ingreedy().parse('1/2 potato')['unit'] == None
