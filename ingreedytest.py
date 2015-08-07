@@ -18,13 +18,13 @@ def test_amounts():
     assert Ingreedy().parse("1.0 cup flour")['amount'] == 1
     assert Ingreedy().parse("1.5 cups flour")['amount'] == 1.5
     assert Ingreedy().parse("1 2/3 cups flour")['amount'] == round(float(5.0/3), 3)
-    assert Ingreedy().parse("1 (28 ounce) can crushed tomatoes")['amount'] == 28
-    assert Ingreedy().parse("2 (28 ounce) can crushed tomatoes")['amount'] == 56
-    assert Ingreedy().parse("3 28 ounce cans of crushed tomatoes")['amount'] == 84
-    assert Ingreedy().parse("one 28 ounce can crushed tomatoes")['amount'] == 28
-    assert Ingreedy().parse("two five ounce can crushed tomatoes")['amount'] == 10
-    assert Ingreedy().parse("two 28 ounce cans crushed tomatoes")['amount'] == 56
-    assert Ingreedy().parse("three 28 ounce cans crushed tomatoes")['amount'] == 84
+    assert Ingreedy().parse("1 (28 ounce) can crushed tomatoes")['amount'] == 1
+    assert Ingreedy().parse("2 (28 ounce) can crushed tomatoes")['amount'] == 2
+    assert Ingreedy().parse("3 28 ounce cans of crushed tomatoes")['amount'] == 3
+    assert Ingreedy().parse("one 28 ounce can crushed tomatoes")['amount'] == 1
+    assert Ingreedy().parse("two five ounce can crushed tomatoes")['amount'] == 2
+    assert Ingreedy().parse("two 28 ounce cans crushed tomatoes")['amount'] == 2
+    assert Ingreedy().parse("three 28 ounce cans crushed tomatoes")['amount'] == 3
     assert Ingreedy().parse("1/2 cups flour")['amount'] == 0.5
     assert Ingreedy().parse(".25 cups flour")['amount'] == 0.25
     assert Ingreedy().parse("12oz tequila")['amount'] == 12
@@ -32,6 +32,7 @@ def test_amounts():
     assert Ingreedy().parse("1 clove garlic, minced")['amount'] == 1
     assert Ingreedy().parse("ground black pepper to taste")['amount'] == None
     assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['amount'] == 1
+    assert Ingreedy().parse("12 (6-ounce) boneless skinless chicken breasts")['amount'] == 12
 
 def test_unit():
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
