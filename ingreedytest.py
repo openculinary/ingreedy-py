@@ -31,6 +31,7 @@ def test_amounts():
     assert Ingreedy().parse("2 eggs, beaten")['amount'] == 2
     assert Ingreedy().parse("1 clove garlic, minced")['amount'] == 1
     assert Ingreedy().parse("ground black pepper to taste")['amount'] == None
+    assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['amount'] == 1
 
 def test_unit():
     assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
@@ -58,3 +59,7 @@ def test_unit():
     # assert Ingreedy().parse("1/2 cups flour")['unit'] == 0.5
     # assert Ingreedy().parse(".25 cups flour")['unit'] == 0.25
     # assert Ingreedy().parse("12oz tequila")['unit'] == 12
+
+def test_ingredient():
+    assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['ingredient'] == 'garlic clove, sliced in 1/2'
+
