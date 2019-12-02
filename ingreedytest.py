@@ -1,69 +1,184 @@
+import pytest
+
 from ingreedypy import Ingreedy
 
+test_cases = {
+    '1.0 cup flour': {
+        'amount': 1,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '1 1/2 cups flour': {
+        'amount': 1.5,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '1 1/2 potatoes': {
+        'amount': 1.5,
+        'ingredient': 'potatoes',
+        'unit': None,
+    },
+    '12345 potatoes': {
+        'amount': 12345,
+        'ingredient': 'potatoes',
+        'unit': None,
+    },
+    '1 2/3 cups flour': {
+        'amount':  round(float(5.0/3), 3),
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '12 (6-ounce) boneless skinless chicken breasts': {
+        'amount': 12,
+        'ingredient': 'boneless skinless chicken breasts',
+        'unit': 'ounce',
+    },
+    '1 (28 ounce) can crushed tomatoes': {
+        'amount': 1,
+        'ingredient': 'can crushed tomatoes',
+        'unit': 'ounce',
+    },
+    '1/2 cups flour': {
+        'amount': 0.5,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '12g potatoes': {
+        'amount': 12,
+        'ingredient': 'potatoes',
+        'unit': 'gram',
+    },
+    '12oz potatoes': {
+        'amount': 12,
+        'ingredient': 'potatoes',
+        'unit': 'ounce',
+    },
+    '12oz tequila': {
+        'amount': 12,
+        'ingredient': 'tequila',
+        'unit': 'ounce',
+    },
+    '1/2 potato': {
+        'amount': 0.5,
+        'ingredient': 'potato',
+        'unit': None,
+    },
+    '1.5 cups flour': {
+        'amount': 1.5,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '1.5 potatoes': {
+        'amount': 1.5,
+        'ingredient': 'potatoes',
+        'unit': None,
+    },
+    '1 clove garlic, minced': {
+        'amount': 1,
+        'ingredient': 'clove garlic, minced',
+        'unit': None,
+    },
+    '1 cup flour': {
+        'amount': 1,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '1 garlic clove, sliced in 1/2': {
+        'amount': 1,
+        'ingredient': 'garlic clove, sliced in 1/2',
+        'unit': None,
+    },
+    '1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market': {
+        'amount': 1,
+        'ingredient': 'Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market',
+        'unit': 'tablespoon',
+    },
+    '2 (28 ounce) can crushed tomatoes': {
+        'amount': 2,
+        'ingredient': 'can crushed tomatoes',
+        'unit': 'ounce',
+    },
+    '.25 cups flour': {
+        'amount': 0.25,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    '2 cups of potatoes': {
+        'amount': 2,
+        'ingredient': 'potatoes',
+        'unit': 'cup',
+    },
+    '2 eggs, beaten': {
+        'amount': 2,
+        'ingredient': 'eggs, beaten',
+        'unit': None,
+    },
+    '3 28 ounce cans of crushed tomatoes': {
+        'amount': 3,
+        'ingredient': 'cans of crushed tomatoes',
+        'unit': 'ounce',
+    },
+    '5 3/4 pinches potatoes': {
+        'amount': 5.75,
+        'ingredient': 'potatoes',
+        'unit': 'pinch',
+    },
+    '.5 potatoes': {
+        'amount': 0.5,
+        'ingredient': 'potatoes',
+        'unit': None,
+    },
+    'a cup of flour': {
+        'amount': 1,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    'ground black pepper to taste': {
+        'amount': None,
+        'ingredient': 'ground black pepper to taste',
+        'unit': None,
+    },
+    'one 28 ounce can crushed tomatoes': {
+        'amount': 1,
+        'ingredient': 'can crushed tomatoes',
+        'unit': 'ounce',
+    },
+    'one cup flour': {
+        'amount': 1,
+        'ingredient': 'flour',
+        'unit': 'cup',
+    },
+    'three 28 ounce cans crushed tomatoes': {
+        'amount': 3,
+        'ingredient': 'cans crushed tomatoes',
+        'unit': 'ounce',
+    },
+    'two 28 ounce cans crushed tomatoes': {
+        'amount': 2,
+        'ingredient': 'cans crushed tomatoes',
+        'unit': 'ounce',
+    },
+    'two five ounce can crushed tomatoes': {
+        'amount': 2,
+        'ingredient': 'can crushed tomatoes',
+        'unit': 'ounce',
+    },
+}
 
-def test_amounts():
-    assert Ingreedy().parse('2 cups of potatoes')['amount'] == 2
-    assert Ingreedy().parse('12345 potatoes')['amount'] == 12345
-    assert Ingreedy().parse('1/2 potato')['amount'] == 0.5
-    assert Ingreedy().parse('1 1/2 potatoes')['amount'] == 1.5
-    assert Ingreedy().parse('5 3/4 pinches potatoes')['amount'] == 5.75
-    assert Ingreedy().parse('1.5 potatoes')['amount'] == 1.5
-    assert Ingreedy().parse('.5 potatoes')['amount'] == 0.5
-    assert Ingreedy().parse('12oz potatoes')['amount'] == 12
-    assert Ingreedy().parse('12g potatoes')['amount'] == 12
-    assert Ingreedy().parse("1 cup flour")['amount'] == 1
-    assert Ingreedy().parse("one cup flour")['amount'] == 1
-    assert Ingreedy().parse("a cup of flour")['amount'] == 1
-    assert Ingreedy().parse("1 1/2 cups flour")['amount'] == 1.5
-    assert Ingreedy().parse("1.0 cup flour")['amount'] == 1
-    assert Ingreedy().parse("1.5 cups flour")['amount'] == 1.5
-    assert Ingreedy().parse("1 2/3 cups flour")['amount'] == round(float(5.0/3), 3)
-    assert Ingreedy().parse("1 (28 ounce) can crushed tomatoes")['amount'] == 1
-    assert Ingreedy().parse("2 (28 ounce) can crushed tomatoes")['amount'] == 2
-    assert Ingreedy().parse("3 28 ounce cans of crushed tomatoes")['amount'] == 3
-    assert Ingreedy().parse("one 28 ounce can crushed tomatoes")['amount'] == 1
-    assert Ingreedy().parse("two five ounce can crushed tomatoes")['amount'] == 2
-    assert Ingreedy().parse("two 28 ounce cans crushed tomatoes")['amount'] == 2
-    assert Ingreedy().parse("three 28 ounce cans crushed tomatoes")['amount'] == 3
-    assert Ingreedy().parse("1/2 cups flour")['amount'] == 0.5
-    assert Ingreedy().parse(".25 cups flour")['amount'] == 0.25
-    assert Ingreedy().parse("12oz tequila")['amount'] == 12
-    assert Ingreedy().parse("2 eggs, beaten")['amount'] == 2
-    assert Ingreedy().parse("1 clove garlic, minced")['amount'] == 1
-    assert Ingreedy().parse("ground black pepper to taste")['amount'] is None
-    assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['amount'] == 1
-    assert Ingreedy().parse("12 (6-ounce) boneless skinless chicken breasts")['amount'] == 12
-    assert Ingreedy().parse("1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market")['amount'] == 1
+
+@pytest.mark.parametrize('description,expectation', test_cases.items())
+def test_amounts(description, expectation):
+    result = Ingreedy().parse(description)
+    assert result['amount'] == expectation['amount']
 
 
-def test_unit():
-    assert Ingreedy().parse("1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market")['unit'] == 'tablespoon'
-    assert Ingreedy().parse('2 cups of potatoes')['unit'] == 'cup'
-    assert Ingreedy().parse('12345 potatoes')['unit'] is None
-    assert Ingreedy().parse('1/2 potato')['unit'] is None
-    assert Ingreedy().parse('1 1/2 potatoes')['unit'] is None
-    assert Ingreedy().parse('5 3/4 pinches potatoes')['unit'] == 'pinch'
-    assert Ingreedy().parse('1.5 potatoes')['unit'] is None
-    assert Ingreedy().parse('.5 potatoes')['unit'] is None
-    assert Ingreedy().parse('12oz potatoes')['unit'] == 'ounce'
-    assert Ingreedy().parse("1 cup flour")['unit'] == 'cup'
-    assert Ingreedy().parse("one cup flour")['unit'] == 'cup'
-    assert Ingreedy().parse("a cup of flour")['unit'] == 'cup'
-    assert Ingreedy().parse("1 1/2 cups flour")['unit'] == 'cup'
-    assert Ingreedy().parse("1.0 cup flour")['unit'] == 'cup'
-    assert Ingreedy().parse("1.5 cups flour")['unit'] == 'cup'
-    assert Ingreedy().parse("1 2/3 cups flour")['unit'] == 'cup'
-    assert Ingreedy().parse("1 (28 ounce) can crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("2 (28 ounce) can crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("3 28 ounce cans of crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("one 28 ounce can crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("two five ounce can crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("two 28 ounce cans crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("three 28 ounce cans crushed tomatoes")['unit'] == 'ounce'
-    assert Ingreedy().parse("1/2 cups flour")['unit'] == 'cup'
-    assert Ingreedy().parse(".25 cups flour")['unit'] == 'cup'
-    assert Ingreedy().parse("12oz tequila")['unit'] == 'ounce'
+@pytest.mark.parametrize('description,expectation', test_cases.items())
+def test_unit(description, expectation):
+    result = Ingreedy().parse(description)
+    assert result['unit'] == expectation['unit']
 
-def test_ingredient():
-    assert Ingreedy().parse("1 garlic clove, sliced in 1/2")['ingredient'] == 'garlic clove, sliced in 1/2'
 
+@pytest.mark.parametrize('description,expectation', test_cases.items())
+def test_ingredient(description, expectation):
+    result = Ingreedy().parse(description)
+    assert result['ingredient'] == expectation['ingredient']
