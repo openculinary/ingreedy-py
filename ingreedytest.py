@@ -32,11 +32,13 @@ test_cases = {
         'amount': 12,
         'ingredient': 'boneless skinless chicken breasts',
         'unit': 'ounce',
+        'weight': 6,
     },
     '1 (28 ounce) can crushed tomatoes': {
         'amount': 1,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     '1/2 cups flour': {
         'amount': 0.5,
@@ -97,6 +99,7 @@ test_cases = {
         'amount': 2,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     '.25 cups flour': {
         'amount': 0.25,
@@ -117,6 +120,7 @@ test_cases = {
         'amount': 3,
         'ingredient': 'cans of crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     '5 3/4 pinches potatoes': {
         'amount': 5.75,
@@ -142,6 +146,7 @@ test_cases = {
         'amount': 1,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     'one cup flour': {
         'amount': 1,
@@ -152,16 +157,19 @@ test_cases = {
         'amount': 3,
         'ingredient': 'cans crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     'two 28 ounce cans crushed tomatoes': {
         'amount': 2,
         'ingredient': 'cans crushed tomatoes',
         'unit': 'ounce',
+        'weight': 28,
     },
     'two five ounce can crushed tomatoes': {
         'amount': 2,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
+        'weight': 5,
     },
 }
 
@@ -182,3 +190,12 @@ def test_unit(description, expectation):
 def test_ingredient(description, expectation):
     result = Ingreedy().parse(description)
     assert result['ingredient'] == expectation['ingredient']
+
+
+@pytest.mark.parametrize('description,expectation', test_cases.items())
+def test_weight(description, expectation):
+    if 'weight' not in expectation:
+        return
+
+    result = Ingreedy().parse(description)
+    assert result['weight'] == expectation['weight']
