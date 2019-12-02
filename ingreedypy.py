@@ -49,7 +49,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = amount? space? (unit)? space? container? (unit)? space? ingredient?
+        ingredient_addition = amount? space? (unit)? space? alternative_amount? space? container? (unit)? space? ingredient?
 
         amount
         = float
@@ -57,6 +57,9 @@ class Ingreedy(NodeVisitor):
         / fraction
         / integer
         / number
+
+        alternative_amount
+        = ~"[/]" space? container
 
         space
         = " "

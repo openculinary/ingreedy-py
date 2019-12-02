@@ -94,6 +94,7 @@ test_cases = {
         'amount': 1,
         'ingredient': 'Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market',
         'unit': 'tablespoon',
+        'weight': 3,
     },
     '2 (28 ounce) can crushed tomatoes': {
         'amount': 2,
@@ -171,6 +172,18 @@ test_cases = {
         'unit': 'ounce',
         'weight': 5,
     },
+    '1kg / 2lb 4oz potatoes': {
+        'amount': 1,
+        'ingredient': 'potatoes',
+        'unit': 'kilogram',
+        'weight': 4,
+    },
+    '2lb 4oz potatoes': {
+        'amount': 2,
+        'ingredient': 'potatoes',
+        'unit': 'pound',
+        'weight': 4,
+    },
 }
 
 
@@ -194,8 +207,5 @@ def test_ingredient(description, expectation):
 
 @pytest.mark.parametrize('description,expectation', test_cases.items())
 def test_weight(description, expectation):
-    if 'weight' not in expectation:
-        return
-
     result = Ingreedy().parse(description)
-    assert result['weight'] == expectation['weight']
+    assert result.get('weight') == expectation.get('weight')
