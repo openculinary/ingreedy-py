@@ -184,6 +184,16 @@ test_cases = {
         'unit': 'pound',
         'weight': 4,
     },
+    '1-1/2 ounce vanilla ice cream': {
+        'amount': 1.5,
+        'ingredient': 'vanilla ice cream',
+        'unit': 'ounce',
+    },
+    '1-½ ounce vanilla ice cream': {
+        'amount': 1.5,
+        'ingredient': 'vanilla ice cream',
+        'unit': 'ounce',
+    },
 }
 
 
