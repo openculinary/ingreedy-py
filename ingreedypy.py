@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from parsimonious.grammar import Grammar
 from parsimonious.nodes import NodeVisitor
 
