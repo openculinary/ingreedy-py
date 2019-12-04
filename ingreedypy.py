@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from parsimonious.grammar import Grammar
 from parsimonious.nodes import NodeVisitor
 
@@ -34,6 +37,27 @@ number_value = {
     'ninety': 90
 }
 
+unicode_fraction_value = {
+    '¼': 1.0/4,
+    '½': 1.0/2,
+    '¾': 3.0/4,
+    '⅐': 1.0/7,
+    '⅑': 1.0/9,
+    '⅒': 1.0/10,
+    '⅓': 1.0/3,
+    '⅔': 2.0/3,
+    '⅕': 1.0/5,
+    '⅖': 2.0/5,
+    '⅗': 3.0/5,
+    '⅘': 4.0/5,
+    '⅙': 1.0/6,
+    '⅚': 5.0/6,
+    '⅛': 1.0/8,
+    '⅜': 3.0/8,
+    '⅝': 5.0/8,
+    '⅞': 7.0/8
+}
+
 
 class Ingreedy(NodeVisitor):
     """Visitor that turns a parse tree into HTML fragments"""
@@ -49,7 +73,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = amount? space? (unit)? space? container? (unit)? space? ingredient?
+        ingredient_addition = amount? space? (unit)? space? alternative_amount? space? container? (unit)? space? ingredient?
 
         amount
         = float
@@ -58,9 +82,16 @@ class Ingreedy(NodeVisitor):
         / integer
         / number
 
+        alternative_amount
+        = ~"[/]" space? container
+
         space
         = " "
         / ~"[\t]"
+
+        separator
+        = space
+        / "-"
 
         ingredient
         = (word (comma? space word)* ~".*")
@@ -77,9 +108,13 @@ class Ingreedy(NodeVisitor):
         = (integer? ~"[.]" integer)
 
         mixed_number
-        = (integer space fraction)
+        = (integer separator fraction)
 
         fraction
+        = (multicharacter_fraction)
+        / (unicode_fraction)
+
+        multicharacter_fraction
         = (integer ~"[/]" integer)
 
         integer
@@ -264,6 +299,26 @@ class Ingreedy(NodeVisitor):
         / "seventy"
         / "eighty"
         / "ninety"
+
+        unicode_fraction
+        = ~"[¼]"u
+        / ~"[½]"u
+        / ~"[¾]"u
+        / ~"[⅐]"u
+        / ~"[⅑]"u
+        / ~"[⅒]"u
+        / ~"[⅓]"u
+        / ~"[⅔]"u
+        / ~"[⅕]"u
+        / ~"[⅖]"u
+        / ~"[⅗]"u
+        / ~"[⅘]"u
+        / ~"[⅙]"u
+        / ~"[⅚]"u
+        / ~"[⅛]"u
+        / ~"[⅜]"u
+        / ~"[⅝]"u
+        / ~"[⅞]"u
         """)
 
     def visit_ingredient(self, node, visited_children):
@@ -290,8 +345,14 @@ class Ingreedy(NodeVisitor):
     def visit_integer(self, node, visited_children):
         return int(node.text)
 
+    def visit_multicharacter_fraction(self, node, visited_children):
+        return float(visited_children[0]) / float(visited_children[2])
+
+    def visit_unicode_fraction(self, node, visited_children):
+        return unicode_fraction_value[node.text]
+
     def visit_fraction(self, node, visited_children):
-        return round(float(visited_children[0]) / float(visited_children[2]), 3)
+        return round(visited_children[0], 3)
 
     def visit_mixed_number(self, node, visited_children):
         return float(visited_children[0]) + float(visited_children[2])
