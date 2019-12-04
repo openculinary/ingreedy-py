@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 from parsimonious.grammar import Grammar
 from parsimonious.nodes import NodeVisitor
@@ -300,24 +301,24 @@ class Ingreedy(NodeVisitor):
         / "ninety"
 
         unicode_fraction
-        = "¼"
-        / "½"
-        / "¾"
-        / "⅐"
-        / "⅑"
-        / "⅒"
-        / "⅓"
-        / "⅔"
-        / "⅕"
-        / "⅖"
-        / "⅗"
-        / "⅘"
-        / "⅙"
-        / "⅚"
-        / "⅛"
-        / "⅜"
-        / "⅝"
-        / "⅞"
+        = ~"[¼]"u
+        / ~"[½]"u
+        / ~"[¾]"u
+        / ~"[⅐]"u
+        / ~"[⅑]"u
+        / ~"[⅒]"u
+        / ~"[⅓]"u
+        / ~"[⅔]"u
+        / ~"[⅕]"u
+        / ~"[⅖]"u
+        / ~"[⅗]"u
+        / ~"[⅘]"u
+        / ~"[⅙]"u
+        / ~"[⅚]"u
+        / ~"[⅛]"u
+        / ~"[⅜]"u
+        / ~"[⅝]"u
+        / ~"[⅞]"u
         """)
 
     def visit_ingredient(self, node, visited_children):
