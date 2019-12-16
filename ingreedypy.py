@@ -268,7 +268,9 @@ class Ingreedy(NodeVisitor):
         = "touches"
         / "touch"
 
-        number
+        number = written_number space
+
+        written_number
         = "a"
         / "an"
         / "zero"
@@ -371,6 +373,9 @@ class Ingreedy(NodeVisitor):
         return self.res
 
     def visit_number(self, node, visited_children):
+        return visited_children[0]
+
+    def visit_written_number(self, node, visited_children):
         return number_value[node.text]
 
     def generic_visit(self, node, visited_children):
