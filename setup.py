@@ -19,8 +19,7 @@ setup(
     description='ingreedy-py parses recipe ingredient lines into a object',
     author='Scott Cooper',
     author_email='scttcper@gmail.com',
-    url='https://github.com/scttcper/ingreedy-py',
-    download_url='https://github.com/scttcper/ingreedy-py/tarball/0.1',
+    url='https://github.com/openculinary/ingreedy-py',
     keywords=['ingreedy', 'ingreedypy', 'recipe', 'parser'],
     install_requires=[
         'parsimonious'
