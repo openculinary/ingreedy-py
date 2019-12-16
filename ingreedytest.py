@@ -197,6 +197,11 @@ test_cases = {
         'ingredient': 'vanilla ice cream',
         'unit': 'ounce',
     },
+    'apple': {
+        'amount': None,
+        'ingredient': 'apple',
+        'unit': None,
+    },
 }
 
 
