@@ -202,6 +202,11 @@ test_cases = {
         'ingredient': 'apple',
         'unit': None,
     },
+    '3-⅝ ounces, weight feta cheese, crumbled/diced': {
+        'amount': 3.625,
+        'ingredient': 'weight feta cheese, crumbled/diced',
+        'unit': 'ounce'
+    }
 }
 
 
