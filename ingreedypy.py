@@ -73,7 +73,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = amount? space? (unit)? space? alternative_amount? space? container? (unit)? space? ingredient?
+        ingredient_addition = amount? break? (unit)? break? alternative_amount? break? container? (unit)? break? ingredient?
 
         amount
         = float
@@ -83,20 +83,21 @@ class Ingreedy(NodeVisitor):
         / number
 
         alternative_amount
-        = ~"[/]" space? container
+        = ~"[/]" break? container
 
-        space
+        break
         = " "
+        / comma
         / ~"[\t]"
 
         separator
-        = space
+        = break
         / "-"
 
         ingredient
-        = (word (comma? space word)* ~".*")
+        = (word (break word)* ~".*")
 
-        container = open? amount "-"? space? unit close?
+        container = open? amount "-"? break? unit close?
 
         open = "("
         close = ")"
@@ -149,7 +150,7 @@ class Ingreedy(NodeVisitor):
         / "c"
 
         fluid_ounce
-        = fluid space ounce
+        = fluid break ounce
 
         fluid
         = "fluid"
@@ -268,7 +269,7 @@ class Ingreedy(NodeVisitor):
         = "touches"
         / "touch"
 
-        number = written_number space
+        number = written_number break
 
         written_number
         = "a"
