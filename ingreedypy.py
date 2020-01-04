@@ -78,25 +78,25 @@ class Ingreedy(NodeVisitor):
         = amount_with_units
         / amount
 
-        translated_quantity
-        = open amount break unit close
+        parenthesized_quantity
+        = open amount break? unit close
 
         alternative_quantity
         = ~"[/]" break? (ignored_amount? break? unit? break?)+
 
         amount_with_units
-        = amount_with_multiplier
+        = amount_with_conversion
         / amount_with_attached_units
-        / amount_with_translation
+        / amount_with_multiplier
 
-        amount_with_multiplier
-        = amount break? unit break translated_quantity
+        amount_with_conversion
+        = amount break? unit break parenthesized_quantity
 
         amount_with_attached_units
         = amount break? unit break
 
-        amount_with_translation
-        = amount break? translated_quantity
+        amount_with_multiplier
+        = amount break? parenthesized_quantity
 
         amount
         = float
@@ -429,17 +429,17 @@ class Ingreedy(NodeVisitor):
     def visit_amount_with_units(self, node, visited_children):
         return visited_children[0]
 
-    def visit_amount_with_multiplier(self, node, visited_children):
-        _, multiplier = visited_children[0]
-        unit, amount = visited_children[2]
-        return unit, amount * multiplier
+    def visit_amount_with_conversion(self, node, visited_children):
+        _, amount = visited_children[0]
+        unit, _ = visited_children[2]
+        return unit, amount
 
     def visit_amount_with_attached_units(self, node, visited_children):
         _, amount = visited_children[0]
         unit, _ = visited_children[2]
         return unit, amount
 
-    def visit_amount_with_translation(self, node, visited_children):
+    def visit_amount_with_multiplier(self, node, visited_children):
         _, multiplier = visited_children[0]
         unit, amount = visited_children[2]
         return unit, amount * multiplier
@@ -447,7 +447,7 @@ class Ingreedy(NodeVisitor):
     def visit_unit(self, node, visited_children):
         return visited_children[0], 1
 
-    def visit_translated_quantity(self, node, visited_children):
+    def visit_parenthesized_quantity(self, node, visited_children):
         _, amount = visited_children[1]
         unit, _ = visited_children[3]
         return unit, amount

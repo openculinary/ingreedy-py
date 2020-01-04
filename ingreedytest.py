@@ -241,6 +241,13 @@ test_cases = {
         ],
         'ingredient': 'potatoes',
     },
+    '2lb 4oz (1kg) potatoes': {
+        'quantity': [
+            {'amount': 2, 'unit': 'pound'},
+            {'amount': 4, 'unit': 'ounce'},
+        ],
+        'ingredient': 'potatoes',
+    },
     '1-1/2 ounce vanilla ice cream': {
         'quantity': {
             'amount': 1.5,
