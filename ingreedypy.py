@@ -88,6 +88,7 @@ class Ingreedy(NodeVisitor):
         break
         = " "
         / comma
+        / hyphen
         / ~"[\t]"
 
         separator
@@ -126,6 +127,9 @@ class Ingreedy(NodeVisitor):
 
         comma
         = ","
+
+        hyphen
+        = "-"
 
         unit
         = (english_unit !letter)
