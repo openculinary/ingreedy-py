@@ -293,6 +293,13 @@ test_cases = {
         }],
         'ingredient': 'hot vegetable stock',
     },
+    'pinch salt': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'pinch'
+        }],
+        'ingredient': 'salt',
+    },
 }
 
 

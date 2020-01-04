@@ -77,6 +77,7 @@ class Ingreedy(NodeVisitor):
         quantity
         = amount_with_units
         / amount
+        / implied_amount
 
         parenthesized_quantity
         = open amount break? unit !letter close
@@ -97,6 +98,9 @@ class Ingreedy(NodeVisitor):
 
         amount_with_multiplier
         = amount break? parenthesized_quantity
+
+        implied_amount
+        = unit !letter
 
         amount
         = float
@@ -418,6 +422,10 @@ class Ingreedy(NodeVisitor):
         _, multiplier = visited_children[0]
         unit, amount = visited_children[2]
         return unit, amount * multiplier
+
+    def visit_implied_amount(self, node, visited_children):
+        unit, _ = visited_children[0]
+        return unit, 1
 
     def visit_unit(self, node, visited_children):
         return visited_children[0], 1
