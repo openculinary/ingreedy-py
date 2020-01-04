@@ -280,6 +280,13 @@ test_cases = {
         },
         'ingredient': 'can of sliced pineapple',
     },
+    '750ml/1 pint 7fl oz hot vegetable stock': {
+        'quantity': {
+            'amount': 750,
+            'unit': 'milliliter'
+        },
+        'ingredient': 'hot vegetable stock',
+    },
 }
 
 
