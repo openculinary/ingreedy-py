@@ -75,7 +75,10 @@ class Ingreedy(NodeVisitor):
         ingredient_addition = (quantity break?)* alternative_quantity? break? ingredient
 
         quantity
-        = amount break? unit? break? translated_quantity?
+        = (amount break? unit break? translated_quantity)
+        / (amount break? translated_quantity)
+        / (amount break? unit)
+        / (amount)
 
         translated_quantity
         = open ignored_amount break unit close
