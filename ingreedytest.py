@@ -206,7 +206,12 @@ test_cases = {
         'amount': 3.625,
         'ingredient': 'weight feta cheese, crumbled/diced',
         'unit': 'ounce'
-    }
+    },
+    '16-ounce can of sliced pineapple': {
+        'amount': 16,
+        'ingredient': 'can of sliced pineapple',
+        'unit': 'ounce'
+    },
 }
 
 
