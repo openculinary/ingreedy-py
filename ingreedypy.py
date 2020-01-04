@@ -391,31 +391,12 @@ class Ingreedy(NodeVisitor):
 
     def visit_quantity(self, node, visited_children):
         unit, amount = visited_children[0]
-        result = self.res['quantity']
-
-        # If no quantity has been discovered so far, store this node's values
-        if result is None:
-            self.res['quantity'] = {'unit': unit, 'amount': amount}
-
-        # If quantity results are a list, append this node's values
-        elif isinstance(result, list):
-            self.res['quantity'] += {'unit': unit, 'amount': amount}
-
-        # If no units had been found so far, establish a multiplied quantity
-        elif result['unit'] is None:
-            result['unit'] = unit
-            result['amount'] *= amount
-
-        # If the result is of the same unit, sum the amount with this node
-        elif result['unit'] == unit:
-            result['amount'] += amount
-
-        # An existing quantity of a different unit was found; create a list
-        else:
-            self.res['quantity'] = [
-                self.res['quantity'],
-                {'unit': unit, 'amount': amount}
-            ]
+        if not self.res['quantity']:
+            self.res['quantity'] = []
+        elif self.res['quantity'][0]['unit'] is None:
+            amount *= self.res['quantity'][0]['amount']
+            self.res['quantity'] = []
+        self.res['quantity'].append({'unit': unit, 'amount': amount})
 
     def visit_amount(self, node, visited_children):
         return None, sum(visited_children)
