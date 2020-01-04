@@ -68,12 +68,20 @@ class Ingreedy(NodeVisitor):
             'unit_type': None,
             'amount': None,
             'ingredient': None,
-            'weight': None
         }
 
     grammar = Grammar(
         """
-        ingredient_addition = amount? break? (unit)? break? alternative_amount? break? container? (unit)? break? ingredient?
+        ingredient_addition = (quantity break?)* alternative_quantity? break? ingredient
+
+        quantity
+        = amount break? unit? break? translated_quantity?
+
+        translated_quantity
+        = open ignored_amount break unit close
+
+        alternative_quantity
+        = ~"[/]" break? (ignored_amount? break? unit?)+
 
         amount
         = float
@@ -82,8 +90,12 @@ class Ingreedy(NodeVisitor):
         / integer
         / number
 
-        alternative_amount
-        = ~"[/]" break? container
+        ignored_amount
+        = float
+        / mixed_number
+        / fraction
+        / integer
+        / number
 
         break
         = " "
@@ -97,8 +109,6 @@ class Ingreedy(NodeVisitor):
 
         ingredient
         = (word (break word)* ~".*")
-
-        container = open? amount "-"? break? unit close?
 
         open = "("
         close = ")"
@@ -371,8 +381,12 @@ class Ingreedy(NodeVisitor):
         if not self.res['amount']:
             self.res['amount'] = sum(visited_children)
         else:
-            self.res['weight'] = sum(visited_children)
-            self.res['amount'] = self.res['amount']
+            if not isinstance(self.res['amount'], list):
+                self.res['amount'] = [self.res['amount']]
+            self.res['amount'] += [sum(visited_children)]
+
+    def visit_alternative_quantity(self, node, visited_children):
+        return self.res
 
     def visit_ingredient_addition(self, node, visited_children):
         return self.res

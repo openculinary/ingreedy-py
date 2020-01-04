@@ -32,16 +32,14 @@ test_cases = {
         'unit': 'cup',
     },
     '12 (6-ounce) boneless skinless chicken breasts': {
-        'amount': 12,
+        'amount': [12, 6],
         'ingredient': 'boneless skinless chicken breasts',
         'unit': 'ounce',
-        'weight': 6,
     },
     '1 (28 ounce) can crushed tomatoes': {
-        'amount': 1,
+        'amount': [1, 28],
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     '1/2 cups flour': {
         'amount': 0.5,
@@ -97,13 +95,11 @@ test_cases = {
         'amount': 1,
         'ingredient': 'Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market',
         'unit': 'tablespoon',
-        'weight': 3,
     },
     '2 (28 ounce) can crushed tomatoes': {
-        'amount': 2,
+        'amount': [2, 28],
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     '.25 cups flour': {
         'amount': 0.25,
@@ -121,10 +117,9 @@ test_cases = {
         'unit': None,
     },
     '3 28 ounce cans of crushed tomatoes': {
-        'amount': 3,
+        'amount': [3, 28],
         'ingredient': 'cans of crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     '5 3/4 pinches potatoes': {
         'amount': 5.75,
@@ -147,10 +142,9 @@ test_cases = {
         'unit': None,
     },
     'one 28 ounce can crushed tomatoes': {
-        'amount': 1,
+        'amount': [1, 28],
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     'one cup flour': {
         'amount': 1,
@@ -158,34 +152,29 @@ test_cases = {
         'unit': 'cup',
     },
     'three 28 ounce cans crushed tomatoes': {
-        'amount': 3,
+        'amount': [3, 28],
         'ingredient': 'cans crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     'two 28 ounce cans crushed tomatoes': {
-        'amount': 2,
+        'amount': [2, 28],
         'ingredient': 'cans crushed tomatoes',
         'unit': 'ounce',
-        'weight': 28,
     },
     'two five ounce can crushed tomatoes': {
-        'amount': 2,
+        'amount': [2, 5],
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
-        'weight': 5,
     },
     '1kg / 2lb 4oz potatoes': {
         'amount': 1,
         'ingredient': 'potatoes',
         'unit': 'kilogram',
-        'weight': 4,
     },
     '2lb 4oz potatoes': {
-        'amount': 2,
+        'amount': [2, 4],
         'ingredient': 'potatoes',
         'unit': 'pound',
-        'weight': 4,
     },
     '1-1/2 ounce vanilla ice cream': {
         'amount': 1.5,
@@ -216,24 +205,7 @@ test_cases = {
 
 
 @pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_amounts(description, expectation):
+def test_parser(description, expectation):
     result = Ingreedy().parse(description)
-    assert result['amount'] == expectation['amount']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_unit(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result['unit'] == expectation['unit']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_ingredient(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result['ingredient'] == expectation['ingredient']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_weight(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result.get('weight') == expectation.get('weight')
+    for key in expectation:
+        assert result[key] == expectation[key]
