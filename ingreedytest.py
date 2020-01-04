@@ -32,12 +32,12 @@ test_cases = {
         'unit': 'cup',
     },
     '12 (6-ounce) boneless skinless chicken breasts': {
-        'amount': [12, 6],
+        'amount': 72,
         'ingredient': 'boneless skinless chicken breasts',
         'unit': 'ounce',
     },
     '1 (28 ounce) can crushed tomatoes': {
-        'amount': [1, 28],
+        'amount': 28,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
     },
@@ -97,7 +97,7 @@ test_cases = {
         'unit': 'tablespoon',
     },
     '2 (28 ounce) can crushed tomatoes': {
-        'amount': [2, 28],
+        'amount': 56,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
     },
@@ -117,7 +117,7 @@ test_cases = {
         'unit': None,
     },
     '3 28 ounce cans of crushed tomatoes': {
-        'amount': [3, 28],
+        'amount': 84,
         'ingredient': 'cans of crushed tomatoes',
         'unit': 'ounce',
     },
@@ -142,7 +142,7 @@ test_cases = {
         'unit': None,
     },
     'one 28 ounce can crushed tomatoes': {
-        'amount': [1, 28],
+        'amount': 28,
         'ingredient': 'can crushed tomatoes',
         'unit': 'ounce',
     },
@@ -152,7 +152,7 @@ test_cases = {
         'unit': 'cup',
     },
     'three 28 ounce cans crushed tomatoes': {
-        'amount': [3, 28],
+        'amount': 84,
         'ingredient': 'cans crushed tomatoes',
         'unit': 'ounce',
     },
