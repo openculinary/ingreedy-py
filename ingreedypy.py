@@ -82,7 +82,7 @@ class Ingreedy(NodeVisitor):
         = open amount break? unit close
 
         alternative_quantity
-        = ~"[/]" break? (ignored_amount? break? unit? break?)+
+        = ~"[/]" break? (amount? break? unit? break?)+
 
         amount_with_units
         = amount_with_conversion
@@ -99,13 +99,6 @@ class Ingreedy(NodeVisitor):
         = amount break? parenthesized_quantity
 
         amount
-        = float
-        / mixed_number
-        / fraction
-        / integer
-        / number
-
-        ignored_amount
         = float
         / mixed_number
         / fraction
