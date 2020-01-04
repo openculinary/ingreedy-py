@@ -64,9 +64,9 @@ class Ingreedy(NodeVisitor):
 
     def __init__(self):
         self.res = {
+            'quantity': None,
             'unit': None,
             'unit_type': None,
-            'amount': None,
             'ingredient': None,
         }
 
@@ -75,19 +75,28 @@ class Ingreedy(NodeVisitor):
         ingredient_addition = (quantity break?)* alternative_quantity? break? ingredient
 
         quantity
-        = quantity_with_units
+        = amount_with_units
         / amount
 
-        quantity_with_units
-        = (amount break? unit break? translated_quantity)
-        / (amount break? unit)
-        / (amount break? translated_quantity)
-
         translated_quantity
-        = open ignored_amount break unit close
+        = open amount break unit close
 
         alternative_quantity
-        = ~"[/]" break? (ignored_amount? break? unit?)+
+        = ~"[/]" break? (ignored_amount? break? unit? break?)+
+
+        amount_with_units
+        = amount_with_multiplier
+        / amount_with_attached_units
+        / amount_with_translation
+
+        amount_with_multiplier
+        = amount break? unit break translated_quantity
+
+        amount_with_attached_units
+        = amount break? unit break
+
+        amount_with_translation
+        = amount break? translated_quantity
 
         amount
         = float
@@ -148,9 +157,9 @@ class Ingreedy(NodeVisitor):
         = "-"
 
         unit
-        = (english_unit !letter)
-        / (metric_unit !letter)
-        / (imprecise_unit !letter)
+        = english_unit
+        / metric_unit
+        / imprecise_unit
 
         english_unit
         = cup
@@ -354,16 +363,19 @@ class Ingreedy(NodeVisitor):
         if not self.res['unit']:
             self.res['unit'] = node.children[0].expr_name
             self.res['unit_type'] = 'imprecise'
+        return node.children[0].expr_name
 
     def visit_metric_unit(self, node, visited_children):
         if not self.res['unit']:
             self.res['unit'] = node.children[0].expr_name
             self.res['unit_type'] = 'metric'
+        return node.children[0].expr_name
 
     def visit_english_unit(self, node, visited_children):
         if not self.res['unit']:
             self.res['unit'] = node.children[0].expr_name
             self.res['unit_type'] = 'english'
+        return node.children[0].expr_name
 
     def visit_integer(self, node, visited_children):
         return int(node.text)
@@ -383,16 +395,62 @@ class Ingreedy(NodeVisitor):
     def visit_float(self, node, visited_children):
         return float(node.text)
 
-    def visit_amount(self, node, visited_children):
-        if not self.res['amount']:
-            self.res['amount'] = sum(visited_children)
-        else:
-            if not isinstance(self.res['amount'], list):
-                self.res['amount'] = [self.res['amount']]
-            self.res['amount'] += [sum(visited_children)]
+    def visit_quantity(self, node, visited_children):
+        unit, amount = visited_children[0]
+        result = self.res['quantity']
 
-    def visit_alternative_quantity(self, node, visited_children):
-        return self.res
+        # If no quantity has been discovered so far, store this node's values
+        if result is None:
+            self.res['quantity'] = {'unit': unit, 'amount': amount}
+
+        # If quantity results are a list, append this node's values
+        elif isinstance(result, list):
+            self.res['quantity'] += {'unit': unit, 'amount': amount}
+
+        # If no units had been found so far, establish a multiplied quantity
+        elif result['unit'] is None:
+            result['unit'] = unit
+            result['amount'] *= amount
+
+        # If the result is of the same unit, sum the amount with this node
+        elif result['unit'] == unit:
+            result['amount'] += amount
+
+        # An existing quantity of a different unit was found; create a list
+        else:
+            self.res['quantity'] = [
+                self.res['quantity'],
+                {'unit': unit, 'amount': amount}
+            ]
+
+    def visit_amount(self, node, visited_children):
+        return None, sum(visited_children)
+
+    def visit_amount_with_units(self, node, visited_children):
+        return visited_children[0]
+
+    def visit_amount_with_multiplier(self, node, visited_children):
+        _, multiplier = visited_children[0]
+        unit, amount = visited_children[2]
+        return unit, amount * multiplier
+
+    def visit_amount_with_attached_units(self, node, visited_children):
+        _, amount = visited_children[0]
+        unit, _ = visited_children[2]
+        return unit, amount
+
+    def visit_amount_with_translation(self, node, visited_children):
+        _, multiplier = visited_children[0]
+        unit, amount = visited_children[2]
+        return unit, amount * multiplier
+
+    def visit_unit(self, node, visited_children):
+        return visited_children[0], 1
+
+    def visit_translated_quantity(self, node, visited_children):
+        _, amount = visited_children[1]
+        unit, _ = visited_children[3]
+        return unit, amount
 
     def visit_ingredient_addition(self, node, visited_children):
         return self.res
