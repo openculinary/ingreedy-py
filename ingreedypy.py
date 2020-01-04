@@ -79,10 +79,10 @@ class Ingreedy(NodeVisitor):
         / amount
 
         parenthesized_quantity
-        = open amount break? unit close
+        = open amount break? unit !letter close
 
         alternative_quantity
-        = ~"[/]" break? (amount? break? unit? break?)+
+        = ~"[/]" break? (amount? break? (unit !letter)? break?)+
 
         amount_with_units
         = amount_with_conversion
@@ -90,10 +90,10 @@ class Ingreedy(NodeVisitor):
         / amount_with_multiplier
 
         amount_with_conversion
-        = amount break? unit break parenthesized_quantity
+        = amount break? unit !letter break parenthesized_quantity
 
         amount_with_attached_units
-        = amount break? unit break
+        = amount break? unit !letter
 
         amount_with_multiplier
         = amount break? parenthesized_quantity
