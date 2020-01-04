@@ -177,6 +177,7 @@ class Ingreedy(NodeVisitor):
         fluid
         = "fluid"
         / "fl."
+        / "fl"
 
         gallon
         = "gallons"
