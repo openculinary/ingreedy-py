@@ -87,9 +87,6 @@ class Ingreedy(NodeVisitor):
         / amount_with_attached_units
         / amount_with_multiplier
 
-        parenthesized_quantity
-        = open amount break? unit !letter close
-
         amount_with_conversion
         = amount break? unit !letter break parenthesized_quantity
 
@@ -98,6 +95,9 @@ class Ingreedy(NodeVisitor):
 
         amount_with_multiplier
         = amount break? parenthesized_quantity
+
+        parenthesized_quantity
+        = open amount_with_attached_units close
 
         single_unit
         = unit !letter
@@ -431,8 +431,7 @@ class Ingreedy(NodeVisitor):
         return visited_children[0], 1
 
     def visit_parenthesized_quantity(self, node, visited_children):
-        _, amount = visited_children[1]
-        unit, _ = visited_children[3]
+        unit, amount = visited_children[1]
         return unit, amount
 
     def visit_ingredient_addition(self, node, visited_children):
