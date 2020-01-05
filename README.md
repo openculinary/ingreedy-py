@@ -6,6 +6,4 @@ python port of https://github.com/iancanderson/ingreedy-js
 pip install ingreedypy
 ```
 
-[Live Demo](http://ingreedy-hangry-demo.herokuapp.com)
-
 To run tests ```coverage run --source=ingreedypy setup.py test```
