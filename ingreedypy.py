@@ -75,7 +75,7 @@ class Ingreedy(NodeVisitor):
         / single_unit
 
         alternative_quantity
-        = ~"[/]" break? (quantity break?)*
+        = ~"[/]" break? multipart_quantity
 
         quantity
         = amount_with_conversion
