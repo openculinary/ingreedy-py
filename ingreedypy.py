@@ -62,18 +62,43 @@ unicode_fraction_value = {
 class Ingreedy(NodeVisitor):
     """Visitor that turns a parse tree into HTML fragments"""
 
-    def __init__(self):
-        self.res = {
-            'unit': None,
-            'unit_type': None,
-            'amount': None,
-            'ingredient': None,
-            'weight': None
-        }
-
     grammar = Grammar(
         """
-        ingredient_addition = amount? break? (unit)? break? alternative_amount? break? container? (unit)? break? ingredient?
+        ingredient_addition = multipart_quantity alternative_quantity? break? ingredient
+
+        multipart_quantity
+        = (quantity_fragment break?)*
+
+        quantity_fragment
+        = quantity
+        / amount
+        / single_unit
+
+        alternative_quantity
+        = ~"[/]" break? multipart_quantity
+
+        quantity
+        = amount_with_conversion
+        / amount_with_attached_units
+        / amount_with_multiplier
+
+        # 4lb (900g)
+        amount_with_conversion
+        = amount break? unit !letter break parenthesized_quantity
+
+        # 1 kg
+        amount_with_attached_units
+        = amount break? unit !letter
+
+        # two (five ounce)
+        amount_with_multiplier
+        = amount break? parenthesized_quantity
+
+        parenthesized_quantity
+        = open amount_with_attached_units close
+
+        single_unit
+        = unit !letter
 
         amount
         = float
@@ -81,9 +106,6 @@ class Ingreedy(NodeVisitor):
         / fraction
         / integer
         / number
-
-        alternative_amount
-        = ~"[/]" break? container
 
         break
         = " "
@@ -97,8 +119,6 @@ class Ingreedy(NodeVisitor):
 
         ingredient
         = (word (break word)* ~".*")
-
-        container = open? amount "-"? break? unit close?
 
         open = "("
         close = ")"
@@ -132,9 +152,9 @@ class Ingreedy(NodeVisitor):
         = "-"
 
         unit
-        = (english_unit !letter)
-        / (metric_unit !letter)
-        / (imprecise_unit !letter)
+        = english_unit
+        / metric_unit
+        / imprecise_unit
 
         english_unit
         = cup
@@ -159,6 +179,7 @@ class Ingreedy(NodeVisitor):
         fluid
         = "fluid"
         / "fl."
+        / "fl"
 
         gallon
         = "gallons"
@@ -332,22 +353,16 @@ class Ingreedy(NodeVisitor):
         text = node.text
         if node.text.startswith('of '):
             text = text[3:]
-        self.res['ingredient'] = text
+        return text
 
     def visit_imprecise_unit(self, node, visited_children):
-        if not self.res['unit']:
-            self.res['unit'] = node.children[0].expr_name
-            self.res['unit_type'] = 'imprecise'
+        return node.children[0].expr_name, 'imprecise'
 
     def visit_metric_unit(self, node, visited_children):
-        if not self.res['unit']:
-            self.res['unit'] = node.children[0].expr_name
-            self.res['unit_type'] = 'metric'
+        return node.children[0].expr_name, 'metric'
 
     def visit_english_unit(self, node, visited_children):
-        if not self.res['unit']:
-            self.res['unit'] = node.children[0].expr_name
-            self.res['unit_type'] = 'english'
+        return node.children[0].expr_name, 'english'
 
     def visit_integer(self, node, visited_children):
         return int(node.text)
@@ -367,15 +382,61 @@ class Ingreedy(NodeVisitor):
     def visit_float(self, node, visited_children):
         return float(node.text)
 
+    def visit_multipart_quantity(self, node, visited_children):
+        results = []
+        for child in visited_children:
+            unit, system, amount = child
+            if results and not results[0]['unit']:
+                amount *= results[0]['amount']
+                results = []
+            results.append({
+                'unit': unit,
+                'unit_type': system,
+                'amount': amount
+            })
+        return results
+
+    def visit_quantity_fragment(self, node, visited_children):
+        return visited_children[0]
+
     def visit_amount(self, node, visited_children):
-        if not self.res['amount']:
-            self.res['amount'] = sum(visited_children)
-        else:
-            self.res['weight'] = sum(visited_children)
-            self.res['amount'] = self.res['amount']
+        return None, None, sum(visited_children)
+
+    def visit_quantity(self, node, visited_children):
+        return visited_children[0]
+
+    def visit_amount_with_conversion(self, node, visited_children):
+        _, _, amount = visited_children[0]
+        unit, system, _ = visited_children[2]
+        return unit, system, amount
+
+    def visit_amount_with_attached_units(self, node, visited_children):
+        _, _, amount = visited_children[0]
+        unit, system, _ = visited_children[2]
+        return unit, system, amount
+
+    def visit_amount_with_multiplier(self, node, visited_children):
+        _, _, multiplier = visited_children[0]
+        unit, system, amount = visited_children[2]
+        return unit, system, amount * multiplier
+
+    def visit_single_unit(self, node, visited_children):
+        unit, system, _ = visited_children[0]
+        return unit, system, 1
+
+    def visit_unit(self, node, visited_children):
+        unit, system = visited_children[0]
+        return unit, system, 1
+
+    def visit_parenthesized_quantity(self, node, visited_children):
+        unit, system, amount = visited_children[1]
+        return unit, system, amount
 
     def visit_ingredient_addition(self, node, visited_children):
-        return self.res
+        return {
+            'quantity': visited_children[0],
+            'ingredient': visited_children[3]
+        }
 
     def visit_number(self, node, visited_children):
         return visited_children[0]
@@ -384,4 +445,4 @@ class Ingreedy(NodeVisitor):
         return number_value[node.text]
 
     def generic_visit(self, node, visited_children):
-        pass
+        return visited_children[0] if visited_children else None

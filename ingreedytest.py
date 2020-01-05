@@ -7,233 +7,346 @@ from ingreedypy import Ingreedy
 
 test_cases = {
     '1.0 cup flour': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1.0,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '1 1/2 cups flour': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '1 1/2 potatoes': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'potatoes',
-        'unit': None,
     },
     '12345 potatoes': {
-        'amount': 12345,
+        'quantity': [{
+            'amount': 12345,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'potatoes',
-        'unit': None,
     },
     '1 2/3 cups flour': {
-        'amount':  round(float(5.0/3), 3),
+        'quantity': [{
+            'amount': round(float(5.0/3), 3),
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '12 (6-ounce) boneless skinless chicken breasts': {
-        'amount': 12,
+        'quantity': [{
+            'amount': 72,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'boneless skinless chicken breasts',
-        'unit': 'ounce',
-        'weight': 6,
     },
     '1 (28 ounce) can crushed tomatoes': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 28,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'can crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     '1/2 cups flour': {
-        'amount': 0.5,
+        'quantity': [{
+            'amount': 0.5,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '12g potatoes': {
-        'amount': 12,
+        'quantity': [{
+            'amount': 12,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'gram',
     },
     '12oz potatoes': {
-        'amount': 12,
+        'quantity': [{
+            'amount': 12,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'ounce',
     },
     '12oz tequila': {
-        'amount': 12,
+        'quantity': [{
+            'amount': 12,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'tequila',
-        'unit': 'ounce',
     },
     '1/2 potato': {
-        'amount': 0.5,
+        'quantity': [{
+            'amount': 0.5,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'potato',
-        'unit': None,
     },
     '1.5 cups flour': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '1.5 potatoes': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'potatoes',
-        'unit': None,
     },
     '1 clove garlic, minced': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'clove garlic, minced',
-        'unit': None,
     },
     '1 cup flour': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '1 garlic clove, sliced in 1/2': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'garlic clove, sliced in 1/2',
-        'unit': None,
     },
     '1 tablespoon (3 teaspoons) Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
         'ingredient': 'Sazon seasoning blend (recommended: Goya) with Mexican and Spanish foods in market',
-        'unit': 'tablespoon',
-        'weight': 3,
     },
     '2 (28 ounce) can crushed tomatoes': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 56,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'can crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     '.25 cups flour': {
-        'amount': 0.25,
+        'quantity': [{
+            'amount': 0.25,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     '2 cups of potatoes': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 2,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'cup',
     },
     '2 eggs, beaten': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 2,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'eggs, beaten',
-        'unit': None,
     },
     '3 28 ounce cans of crushed tomatoes': {
-        'amount': 3,
+        'quantity': [{
+            'amount': 84,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'cans of crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     '5 3/4 pinches potatoes': {
-        'amount': 5.75,
+        'quantity': [{
+            'amount': 5.75,
+            'unit': 'pinch',
+            'unit_type': 'imprecise',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'pinch',
     },
     '.5 potatoes': {
-        'amount': 0.5,
+        'quantity': [{
+            'amount': 0.5,
+            'unit': None,
+            'unit_type': None,
+        }],
         'ingredient': 'potatoes',
-        'unit': None,
     },
     'a cup of flour': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     'ground black pepper to taste': {
-        'amount': None,
+        'quantity': [],
         'ingredient': 'ground black pepper to taste',
-        'unit': None,
     },
     'one 28 ounce can crushed tomatoes': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 28,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'can crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     'one cup flour': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
         'ingredient': 'flour',
-        'unit': 'cup',
     },
     'three 28 ounce cans crushed tomatoes': {
-        'amount': 3,
+        'quantity': [{
+            'amount': 84,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'cans crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     'two 28 ounce cans crushed tomatoes': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 56,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'cans crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 28,
     },
     'two five ounce can crushed tomatoes': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 10,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'can crushed tomatoes',
-        'unit': 'ounce',
-        'weight': 5,
     },
     '1kg / 2lb 4oz potatoes': {
-        'amount': 1,
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'kilogram',
-        'weight': 4,
     },
     '2lb 4oz potatoes': {
-        'amount': 2,
+        'quantity': [{
+            'amount': 2,
+            'unit': 'pound',
+            'unit_type': 'english',
+        }, {
+            'amount': 4,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'potatoes',
-        'unit': 'pound',
-        'weight': 4,
+    },
+    '2lb 4oz (1kg) potatoes': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'pound',
+            'unit_type': 'english',
+        }, {
+            'amount': 4,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'potatoes',
     },
     '1-1/2 ounce vanilla ice cream': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'vanilla ice cream',
-        'unit': 'ounce',
     },
     '1-½ ounce vanilla ice cream': {
-        'amount': 1.5,
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'vanilla ice cream',
-        'unit': 'ounce',
     },
     'apple': {
-        'amount': None,
+        'quantity': [],
         'ingredient': 'apple',
-        'unit': None,
     },
     '3-⅝ ounces, weight feta cheese, crumbled/diced': {
-        'amount': 3.625,
+        'quantity': [{
+            'amount': 3.625,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'weight feta cheese, crumbled/diced',
-        'unit': 'ounce'
     },
     '16-ounce can of sliced pineapple': {
-        'amount': 16,
+        'quantity': [{
+            'amount': 16,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
         'ingredient': 'can of sliced pineapple',
-        'unit': 'ounce'
+    },
+    '750ml/1 pint 7fl oz hot vegetable stock': {
+        'quantity': [{
+            'amount': 750,
+            'unit': 'milliliter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    'pinch salt': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'pinch',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'salt',
     },
 }
 
 
 @pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_amounts(description, expectation):
+def test_parser(description, expectation):
     result = Ingreedy().parse(description)
-    assert result['amount'] == expectation['amount']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_unit(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result['unit'] == expectation['unit']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_ingredient(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result['ingredient'] == expectation['ingredient']
-
-
-@pytest.mark.parametrize('description,expectation', test_cases.items())
-def test_weight(description, expectation):
-    result = Ingreedy().parse(description)
-    assert result.get('weight') == expectation.get('weight')
+    for key in expectation:
+        assert result[key] == expectation[key]
