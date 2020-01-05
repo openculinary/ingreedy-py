@@ -411,7 +411,6 @@ class Ingreedy(NodeVisitor):
         return unit, system, amount
 
     def visit_amount_with_attached_units(self, node, visited_children):
-        print(visited_children)
         _, _, amount = visited_children[0]
         unit, system, _ = visited_children[2]
         return unit, system, amount
