@@ -87,12 +87,15 @@ class Ingreedy(NodeVisitor):
         / amount_with_attached_units
         / amount_with_multiplier
 
+        # 4lb (900g)
         amount_with_conversion
         = amount break? unit !letter break parenthesized_quantity
 
+        # 1 kg
         amount_with_attached_units
         = amount break? unit !letter
 
+        # two (five ounce)
         amount_with_multiplier
         = amount break? parenthesized_quantity
 
