@@ -72,23 +72,23 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = (quantity break?)* alternative_quantity? break? ingredient
+        ingredient_addition = (quantity_fragment break?)* alternative_quantity? break? ingredient
 
-        quantity
-        = amount_with_units
+        quantity_fragment
+        = quantity
         / amount
-        / implied_amount
-
-        parenthesized_quantity
-        = open amount break? unit !letter close
+        / single_unit
 
         alternative_quantity
-        = ~"[/]" break? (amount? break? (unit !letter)? break?)+
+        = ~"[/]" break? (quantity break?)*
 
-        amount_with_units
+        quantity
         = amount_with_conversion
         / amount_with_attached_units
         / amount_with_multiplier
+
+        parenthesized_quantity
+        = open amount break? unit !letter close
 
         amount_with_conversion
         = amount break? unit !letter break parenthesized_quantity
@@ -99,7 +99,7 @@ class Ingreedy(NodeVisitor):
         amount_with_multiplier
         = amount break? parenthesized_quantity
 
-        implied_amount
+        single_unit
         = unit !letter
 
         amount
@@ -393,7 +393,7 @@ class Ingreedy(NodeVisitor):
     def visit_float(self, node, visited_children):
         return float(node.text)
 
-    def visit_quantity(self, node, visited_children):
+    def visit_quantity_fragment(self, node, visited_children):
         unit, amount = visited_children[0]
         if not self.res['quantity']:
             self.res['quantity'] = []
@@ -405,7 +405,7 @@ class Ingreedy(NodeVisitor):
     def visit_amount(self, node, visited_children):
         return None, sum(visited_children)
 
-    def visit_amount_with_units(self, node, visited_children):
+    def visit_quantity(self, node, visited_children):
         return visited_children[0]
 
     def visit_amount_with_conversion(self, node, visited_children):
@@ -423,7 +423,7 @@ class Ingreedy(NodeVisitor):
         unit, amount = visited_children[2]
         return unit, amount * multiplier
 
-    def visit_implied_amount(self, node, visited_children):
+    def visit_single_unit(self, node, visited_children):
         unit, _ = visited_children[0]
         return unit, 1
 
