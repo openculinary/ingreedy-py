@@ -342,6 +342,14 @@ test_cases = {
         }],
         'ingredient': 'salt',
     },
+    '4 (16 ounce) t-bone steaks, at room temperature': {
+        'quantity': [{
+            'amount': 64,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
+        'ingredient': 't-bone steaks, at room temperature',
+    },
 }
 
 

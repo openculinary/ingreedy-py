@@ -72,7 +72,6 @@ class Ingreedy(NodeVisitor):
         quantity_fragment
         = quantity
         / amount
-        / single_unit
 
         alternative_quantity
         = ~"[/]" break? multipart_quantity
@@ -81,6 +80,7 @@ class Ingreedy(NodeVisitor):
         = amount_with_conversion
         / amount_with_attached_units
         / amount_with_multiplier
+        / amount_imprecise
 
         # 4lb (900g)
         amount_with_conversion
@@ -94,11 +94,12 @@ class Ingreedy(NodeVisitor):
         amount_with_multiplier
         = amount break? parenthesized_quantity
 
+        # pinch
+        amount_imprecise
+        = imprecise_unit !letter
+
         parenthesized_quantity
         = open amount_with_attached_units close
-
-        single_unit
-        = unit !letter
 
         amount
         = float
@@ -420,8 +421,8 @@ class Ingreedy(NodeVisitor):
         unit, system, amount = visited_children[2]
         return unit, system, amount * multiplier
 
-    def visit_single_unit(self, node, visited_children):
-        unit, system, _ = visited_children[0]
+    def visit_amount_imprecise(self, node, visited_children):
+        unit, system = visited_children[0]
         return unit, system, 1
 
     def visit_unit(self, node, visited_children):
