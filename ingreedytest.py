@@ -369,7 +369,7 @@ test_cases = {
     '2.5 kcal': {
         'quantity': [{
             'amount': 2.5,
-            'unit': 'kilocalorie',
+            'unit': 'calorie',
             'unit_type': 'english',
         }],
         'ingredient': None,

@@ -162,18 +162,12 @@ class Ingreedy(NodeVisitor):
         / cup
         / fluid_ounce
         / gallon
-        / kilocalorie
         / ounce
         / pint
         / pound
         / quart
         / tablespoon
         / teaspoon
-
-        calorie
-        = "calories"
-        / "calorie"
-        / "cal"
 
         cup
         = "cups"
@@ -195,8 +189,11 @@ class Ingreedy(NodeVisitor):
         / "gal."
         / "gal"
 
-        kilocalorie
-        = "kilocalories"
+        calorie
+        = "calories"
+        / "calorie"
+        / "cal"
+        / "kilocalories"
         / "kilocalorie"
         / "kCal"
         / "kcal"
