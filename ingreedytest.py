@@ -350,6 +350,14 @@ test_cases = {
         }],
         'ingredient': 't-bone steaks, at room temperature',
     },
+    '5 g': {
+        'quantity': [{
+            'amount': 5,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    }
 }
 
 
