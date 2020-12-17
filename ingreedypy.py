@@ -64,7 +64,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = multipart_quantity alternative_quantity? break? ingredient
+        ingredient_addition = multipart_quantity alternative_quantity? break? ingredient?
 
         multipart_quantity
         = (quantity_fragment break?)*
