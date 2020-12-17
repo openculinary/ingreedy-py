@@ -24,5 +24,7 @@ setup(
             'pytest-cov',
         ]
     },
-    classifiers=[],
+    classifiers=[
+        "License :: OSI Approved :: MIT License",
+    ],
 )
