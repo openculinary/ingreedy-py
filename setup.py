@@ -24,7 +24,11 @@ setup(
     install_requires=[
         'parsimonious'
     ],
-    tests_require=['pytest'],
-    test_suite='ingreedytest',
+    extras_require={
+        'tests': [
+            'pytest',
+            'pytest-cov',
+        ]
+    },
     classifiers=[],
 )

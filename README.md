@@ -3,7 +3,11 @@ python port of https://github.com/iancanderson/ingreedy-js
 
 ## Installation
 ```bash
-pip install ingreedypy
+$ pip install ingreedypy
 ```
 
-To run tests ```coverage run --source=ingreedypy setup.py test```
+## Local Testing
+```bash
+$ pip install -e .[tests]
+$ py.test --cov=ingreedypy ingreedytest.py
+```
