@@ -357,7 +357,39 @@ test_cases = {
             'unit_type': 'metric',
         }],
         'ingredient': None,
-    }
+    },
+    '30 cal': {
+        'quantity': [{
+            'amount': 30,
+            'unit': 'calorie',
+            'unit_type': 'english',
+        }],
+        'ingredient': None,
+    },
+    '2.5 kcal': {
+        'quantity': [{
+            'amount': 2.5,
+            'unit': 'kilocalorie',
+            'unit_type': 'english',
+        }],
+        'ingredient': None,
+    },
+    '50 joules': {
+        'quantity': [{
+            'amount': 50,
+            'unit': 'joule',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '1 kJ': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilojoule',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
 }
 
 

@@ -158,15 +158,22 @@ class Ingreedy(NodeVisitor):
         / imprecise_unit
 
         english_unit
-        = cup
+        = calorie
+        / cup
         / fluid_ounce
         / gallon
+        / kilocalorie
         / ounce
         / pint
         / pound
         / quart
         / tablespoon
         / teaspoon
+
+        calorie
+        = "calories"
+        / "calorie"
+        / "cal"
 
         cup
         = "cups"
@@ -187,6 +194,12 @@ class Ingreedy(NodeVisitor):
         / "gallon"
         / "gal."
         / "gal"
+
+        kilocalorie
+        = "kilocalories"
+        / "kilocalorie"
+        / "kCal"
+        / "kcal"
 
         ounce
         = "ounces"
@@ -236,7 +249,9 @@ class Ingreedy(NodeVisitor):
 
         metric_unit
         = gram
+        / joule
         / kilogram
+        / kilojoule
         / liter
         / milligram
         / milliliter
@@ -249,11 +264,22 @@ class Ingreedy(NodeVisitor):
         / "g."
         / "g"
 
+        joule
+        = "joules"
+        / "joule"
+        / "j"
+
         kilogram
         = "kilograms"
         / "kilogram"
         / "kg."
         / "kg"
+
+        kilojoule
+        = "kilojoules"
+        / "kilojoule"
+        / "kJ"
+        / "kj"
 
         liter
         = "liters"
