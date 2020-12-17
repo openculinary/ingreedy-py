@@ -1,4 +1,4 @@
-# ingreedy-py [![Coverage Status](https://coveralls.io/repos/scttcper/ingreedy-py/badge.svg?branch=master&service=github)](https://coveralls.io/github/scttcper/ingreedy-py?branch=master)
+# ingreedy-py
 python port of https://github.com/iancanderson/ingreedy-js
 
 ## Installation
