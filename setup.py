@@ -7,7 +7,7 @@ with open('README.md', 'r') as fh:
 setup(
     name='ingreedypy',
     py_modules=['ingreedypy'],
-    version='1.3.3',
+    version='1.3.4',
     description='ingreedy-py parses recipe ingredient lines into a object',
     long_description=long_description,
     long_description_content_type='text/markdown',
