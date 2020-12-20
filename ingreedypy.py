@@ -64,7 +64,7 @@ class Ingreedy(NodeVisitor):
 
     grammar = Grammar(
         """
-        ingredient_addition = multipart_quantity alternative_quantity? break? ingredient?
+        ingredient_addition = multipart_quantity alternative_quantity? break? ingredient? catch_all
 
         multipart_quantity
         = (quantity_fragment break?)*
@@ -119,7 +119,7 @@ class Ingreedy(NodeVisitor):
         / "-"
 
         ingredient
-        = (word (break word)* ~".*")
+        = word (break word)* catch_all
 
         open = "("
         close = ")"
@@ -371,6 +371,9 @@ class Ingreedy(NodeVisitor):
         / ~"[⅜]"u
         / ~"[⅝]"u
         / ~"[⅞]"u
+
+        catch_all
+        = ~".*"
         """)
 
     def visit_ingredient(self, node, visited_children):

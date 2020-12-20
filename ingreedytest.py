@@ -390,6 +390,14 @@ test_cases = {
         }],
         'ingredient': None,
     },
+    '20 gallons.': {
+        'quantity': [{
+            'amount': 20,
+            'unit': 'gallon',
+            'unit_type': 'english',
+        }],
+        'ingredient': None,
+    },
 }
 
 
