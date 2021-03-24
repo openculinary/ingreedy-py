@@ -119,7 +119,16 @@ class Ingreedy(NodeVisitor):
         / "-"
 
         ingredient
-        = word (break word)* catch_all
+        = (thing+) catch_all
+
+        thing
+        = word
+        / parenthesized_stuff
+        / amount
+        / break
+
+        parenthesized_stuff
+        = open thing* close
 
         open = "("
         close = ")"
