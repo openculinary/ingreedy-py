@@ -80,8 +80,8 @@ class Ingreedy(NodeVisitor):
         = amount_with_conversion
         / amount_with_attached_units
         / amount_with_multiplier
+        / amount_with_property
         / amount_imprecise
-        / amount_with_other
 
         # 4lb (900g)
         amount_with_conversion
@@ -95,19 +95,23 @@ class Ingreedy(NodeVisitor):
         amount_with_multiplier
         = amount break? parenthesized_quantity
 
+        # four (1/2 size)
+        amount_with_property
+        = amount break? parenthesized_property
+
         # pinch
         amount_imprecise
         = imprecise_unit !letter
 
         # two (thinly sliced)
-        amount_with_other
-        = amount break? parenthesized_other?
+        amount_with_property
+        = amount break? parenthesized_property
 
         parenthesized_quantity
         = open amount_with_attached_units close
 
-        parenthesized_other
-        = open amount? word? (break word)* close
+        parenthesized_property
+        = open amount? break? word (break word)* close
 
         amount
         = float

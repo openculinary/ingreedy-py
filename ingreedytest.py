@@ -406,7 +406,7 @@ test_cases = {
         }],
         'ingredient': 'bananas',
     },
-    '6 (1/4 inch thick) slices Italian bread': {
+    '6 (1/2 inch thick) slices Italian bread': {
         'quantity': [{
             'amount': 6,
             'unit': None,
