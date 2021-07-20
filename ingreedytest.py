@@ -398,6 +398,22 @@ test_cases = {
         }],
         'ingredient': None,
     },
+    '6 (thinly sliced) bananas': {
+        'quantity': [{
+            'amount': 6,
+            'unit': None,
+            'unit_type': None,
+        }],
+        'ingredient': 'bananas',
+    },
+    '6 (1/2 inch thick) slices Italian bread': {
+        'quantity': [{
+            'amount': 6,
+            'unit': None,
+            'unit_type': None,
+        }],
+        'ingredient': 'slices Italian bread',
+    },
 }
 
 
