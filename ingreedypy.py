@@ -150,7 +150,7 @@ class Ingreedy(NodeVisitor):
         / (unicode_fraction)
 
         multicharacter_fraction
-        = (integer ~"[/]" integer)
+        = (integer ~"[/⁄]" integer)
 
         integer
         = ~"[0-9]+"

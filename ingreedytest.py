@@ -414,6 +414,14 @@ test_cases = {
         }],
         'ingredient': 'slices Italian bread',
     },
+    '1⁄2 orange': {
+        'quantity': [{
+            'amount': 0.5,
+            'unit': None,
+            'unit_type': None,
+        }],
+        'ingredient': 'orange',
+    },
 }
 
 
