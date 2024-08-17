@@ -137,20 +137,20 @@ class Ingreedy(NodeVisitor):
         close = ")"
 
         word
-        = (letter+)
+        = letter+
 
         float
-        = (integer? ~"[.]" integer)
+        = integer? ~"[.]" integer
 
         mixed_number
-        = (integer separator fraction)
+        = integer separator fraction
 
         fraction
-        = (multicharacter_fraction)
-        / (unicode_fraction)
+        = multicharacter_fraction
+        / unicode_fraction
 
         multicharacter_fraction
-        = (integer ~"[/⁄]" integer)
+        = integer ~"[/⁄]" integer
 
         integer
         = ~"[0-9]+"
