@@ -131,7 +131,8 @@ class Ingreedy(NodeVisitor):
         / "-"
 
         ingredient
-        = word (break word)* catch_all
+        = (word (break word)* catch_all)
+        / (percentage ~"[- ]" word (break word)* catch_all)
 
         open = "("
         close = ")"
@@ -153,7 +154,12 @@ class Ingreedy(NodeVisitor):
         = integer ~"[/⁄]" integer
 
         integer
-        = ~"[0-9]+"
+        = ~"[0-9]+" !"%"
+
+        percentage
+        = ~"[1][0][0][%]"
+        / ~"[1-9][0-9][%]"
+        / ~"[0-9][%]"
 
         letter
         = ~"[a-zA-Z]"

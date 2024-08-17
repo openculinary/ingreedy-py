@@ -422,6 +422,14 @@ test_cases = {
         }],
         'ingredient': 'orange',
     },
+    '2 cups 1%-fat milk': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
+        'ingredient': '1%-fat milk',
+    },
 }
 
 
