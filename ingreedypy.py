@@ -174,6 +174,7 @@ class Ingreedy(NodeVisitor):
         = english_unit
         / metric_unit
         / imprecise_unit
+        / abbreviated_unit
 
         english_unit
         = calorie
@@ -320,6 +321,9 @@ class Ingreedy(NodeVisitor):
         / pinch
         / touch
 
+        abbreviated_unit
+        = letter letter letter?
+
         dash
         = "dashes"
         / "dash"
@@ -408,6 +412,9 @@ class Ingreedy(NodeVisitor):
 
     def visit_english_unit(self, node, visited_children):
         return node.children[0].expr_name, 'english'
+
+    def visit_abbreviated_unit(self, node, visited_children):
+        return node.text, 'abbreviated'
 
     def visit_integer(self, node, visited_children):
         return int(node.text)

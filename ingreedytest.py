@@ -430,6 +430,14 @@ test_cases = {
         }],
         'ingredient': '1%-fat milk',
     },
+    '2 PL cukr': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'PL',
+            'unit_type': 'abbreviated',
+        }],
+        'ingredient': 'cukr',
+    },
 }
 
 
