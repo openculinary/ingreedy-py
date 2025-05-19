@@ -438,6 +438,22 @@ test_cases = {
         }],
         'ingredient': 'cukr',
     },
+    '1 egg': {
+        'quantity': [{
+            'amount': 1,
+            'unit': None,
+            'unit_type': None,
+        }],
+        'ingredient': 'egg',
+    },
+    '1 tbsp oil': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'oil',
+    },
 }
 
 

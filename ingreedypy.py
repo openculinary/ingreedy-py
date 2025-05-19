@@ -322,7 +322,10 @@ class Ingreedy(NodeVisitor):
         / touch
 
         abbreviated_unit
-        = letter letter letter?
+        = !abbrevation_exception letter letter letter?
+
+        abbrevation_exception
+        = "egg"
 
         dash
         = "dashes"
