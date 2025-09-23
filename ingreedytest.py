@@ -46,6 +46,30 @@ test_cases = {
         }],
         'ingredient': 'flour',
     },
+    '1 2/3 cup(s) flour': {
+        'quantity': [{
+            'amount': round(float(5.0/3), 3),
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '1 2/3 C flour': {
+        'quantity': [{
+            'amount': round(float(5.0/3), 3),
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '1 2/3 C. flour': {
+        'quantity': [{
+            'amount': round(float(5.0/3), 3),
+            'unit': 'cup',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
     '12 (6-ounce) boneless skinless chicken breasts': {
         'quantity': [{
             'amount': 72,
@@ -71,6 +95,38 @@ test_cases = {
         'ingredient': 'flour',
     },
     '12g potatoes': {
+        'quantity': [{
+            'amount': 12,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '12 gram(s) potatoes': {
+        'quantity': [{
+            'amount': 12,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '12gram(s) potatoes': {
+        'quantity': [{
+            'amount': 12,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '12G. potatoes': {
+        'quantity': [{
+            'amount': 12,
+            'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '12G potatoes': {
         'quantity': [{
             'amount': 12,
             'unit': 'gram',
@@ -130,6 +186,198 @@ test_cases = {
         'quantity': [{
             'amount': 1,
             'unit': 'cup',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tablespoons flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tablespoon(s) flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tablespoons flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tbspns. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tbspns flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 Tbsp. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 Tbsp flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tbsp. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tbsp flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 TBS. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 TBS flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 Tbs. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 Tbs flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'tablespoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teaspoons flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teaspoon(s) flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teaspoon flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teasps. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teasps flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teasp. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 teasp flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tsp. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 tsp flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 t. flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'flour',
+    },
+    '6 t flour': {
+        'quantity': [{
+            'amount': 6,
+            'unit': 'teaspoon',
             'unit_type': 'english',
         }],
         'ingredient': 'flour',
@@ -266,6 +514,46 @@ test_cases = {
         }],
         'ingredient': 'potatoes',
     },
+    '1 kilogram(s) / 2lb 4oz potatoes': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '1KG. / 2lb 4oz potatoes': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '1KG / 2lb 4oz potatoes': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '1Kg. / 2lb 4oz potatoes': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '1Kg / 2lb 4oz potatoes': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'kilogram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'potatoes',
+    },
     '2lb 4oz potatoes': {
         'quantity': [{
             'amount': 2,
@@ -274,6 +562,30 @@ test_cases = {
         }, {
             'amount': 4,
             'unit': 'ounce',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '2 pound(s) potatoes': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'pound',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '2 # potatoes': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'pound',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'potatoes',
+    },
+    '2 pound. potatoes': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'pound',
             'unit_type': 'english',
         }],
         'ingredient': 'potatoes',
@@ -291,6 +603,22 @@ test_cases = {
         'ingredient': 'potatoes',
     },
     '1-1/2 ounce vanilla ice cream': {
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'vanilla ice cream',
+    },
+    '1-1/2 ounce(s) vanilla ice cream': {
+        'quantity': [{
+            'amount': 1.5,
+            'unit': 'ounce',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'vanilla ice cream',
+    },
+        '1-1/2 ounce. vanilla ice cream': {
         'quantity': [{
             'amount': 1.5,
             'unit': 'ounce',
@@ -334,6 +662,118 @@ test_cases = {
         }],
         'ingredient': 'hot vegetable stock',
     },
+    '750 milliliters/1 pint 7fl oz hot vegetable stock': {
+        'quantity': [{
+            'amount': 750,
+            'unit': 'milliliter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '750 milliliter(s)/1 pint 7fl oz hot vegetable stock': {
+        'quantity': [{
+            'amount': 750,
+            'unit': 'milliliter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '750mls./1 pint 7fl oz hot vegetable stock': {
+        'quantity': [{
+            'amount': 750,
+            'unit': 'milliliter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '750mls/1 pint 7fl oz hot vegetable stock': {
+        'quantity': [{
+            'amount': 750,
+            'unit': 'milliliter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 liters hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'liter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 liter(s) hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'liter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 L. hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'liter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 L hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'liter',
+            'unit_type': 'metric',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 pint hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'pint',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 pint(s) hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'pint',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 pint. hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'pint',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 quarts hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'quart',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 quart(s) hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'quart',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
+    '3 quart. hot vegetable stock': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'quart',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'hot vegetable stock',
+    },
     'pinch salt': {
         'quantity': [{
             'amount': 1,
@@ -341,6 +781,78 @@ test_cases = {
             'unit_type': 'imprecise',
         }],
         'ingredient': 'salt',
+    },
+    'stick cinnamon': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'stick',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'cinnamon',
+    },
+    '3 sticks cinnamon': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'stick',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'cinnamon',
+    },
+    'head lettuce': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'head',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'lettuce',
+    },
+    '4 heads lettuce': {
+        'quantity': [{
+            'amount': 4,
+            'unit': 'head',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'lettuce',
+    },
+    'punnet raspberries': {
+        'quantity': [{
+            'amount': 1,
+            'unit': 'punnet',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'raspberries',
+    },
+    '2 punnets raspberries': {
+        'quantity': [{
+            'amount': 2,
+            'unit': 'punnet',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'raspberries',
+    },
+    '3 punnetts raspberries': {
+        'quantity': [{
+            'amount': 3,
+            'unit': 'punnet',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'raspberries',
+    },
+    '4 punnett raspberries': {
+        'quantity': [{
+            'amount': 4,
+            'unit': 'punnet',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'raspberries',
+    },
+    '4 heads lettuce': {
+        'quantity': [{
+            'amount': 4,
+            'unit': 'head',
+            'unit_type': 'imprecise',
+        }],
+        'ingredient': 'lettuce',
     },
     '4 (16 ounce) t-bone steaks, at room temperature': {
         'quantity': [{
@@ -354,6 +866,38 @@ test_cases = {
         'quantity': [{
             'amount': 5,
             'unit': 'gram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '5 milligrams': {
+        'quantity': [{
+            'amount': 5,
+            'unit': 'milligram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '5 milligram(s)': {
+        'quantity': [{
+            'amount': 5,
+            'unit': 'milligram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '5 mgs.': {
+        'quantity': [{
+            'amount': 5,
+            'unit': 'milligram',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '5 mgs': {
+        'quantity': [{
+            'amount': 5,
+            'unit': 'milligram',
             'unit_type': 'metric',
         }],
         'ingredient': None,
@@ -382,9 +926,25 @@ test_cases = {
         }],
         'ingredient': None,
     },
+    '50 joule(s)': {
+        'quantity': [{
+            'amount': 50,
+            'unit': 'joule',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
     '1 kJ': {
         'quantity': [{
             'amount': 1,
+            'unit': 'kilojoule',
+            'unit_type': 'metric',
+        }],
+        'ingredient': None,
+    },
+    '3 kilojoule(s)': {
+        'quantity': [{
+            'amount': 3,
             'unit': 'kilojoule',
             'unit_type': 'metric',
         }],
@@ -397,6 +957,38 @@ test_cases = {
             'unit_type': 'english',
         }],
         'ingredient': None,
+    },
+    '20 gallons. bananas': {
+        'quantity': [{
+            'amount': 20,
+            'unit': 'gallon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'bananas',
+    },
+    '20 gallon bananas': {
+        'quantity': [{
+            'amount': 20,
+            'unit': 'gallon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'bananas',
+    },
+    '20 gallon. bananas': {
+        'quantity': [{
+            'amount': 20,
+            'unit': 'gallon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'bananas',
+    },
+    '20 gallon(s) bananas': {
+        'quantity': [{
+            'amount': 20,
+            'unit': 'gallon',
+            'unit_type': 'english',
+        }],
+        'ingredient': 'bananas',
     },
     '6 (thinly sliced) bananas': {
         'quantity': [{

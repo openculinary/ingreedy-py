@@ -190,7 +190,10 @@ class Ingreedy(NodeVisitor):
 
         cup
         = "cups"
+        / "cup(s)"
         / "cup"
+        / "C."
+        / "C"
         / "c."
         / "c"
 
@@ -203,7 +206,10 @@ class Ingreedy(NodeVisitor):
         / "fl"
 
         gallon
-        = "gallons"
+        = "gallons."
+        / "gallons"
+        / "gallon(s)"
+        / "gallon."
         / "gallon"
         / "gal."
         / "gal"
@@ -219,26 +225,35 @@ class Ingreedy(NodeVisitor):
 
         ounce
         = "ounces"
+        / "ounce(s)"
+        / "ounce."
         / "ounce"
         / "oz."
         / "oz"
 
         pint
         = "pints"
+        / "pint(s)"
+        / "pint."
         / "pint"
         / "pt."
         / "pt"
 
         pound
         = "pounds"
+        / "pound(s)"
+        / "pound."
         / "pound"
         / "lbs."
         / "lbs"
         / "lb."
         / "lb"
+        / "#"
 
         quart
         = "quarts"
+        / "quart(s)"
+        / "quart."
         / "quart"
         / "qts."
         / "qts"
@@ -247,9 +262,19 @@ class Ingreedy(NodeVisitor):
 
         tablespoon
         = "tablespoons"
+        / "tablespoon(s)"
+        / "tablespoon."
         / "tablespoon"
+        / "tbspns."
+        / "tbspns"
+        / "Tbsp."
+        / "Tbsp"
         / "tbsp."
         / "tbsp"
+        / "TBS."
+        / "TBS"
+        / "Tbs."
+        / "Tbs"
         / "tbs."
         / "tbs"
         / "T."
@@ -257,7 +282,12 @@ class Ingreedy(NodeVisitor):
 
         teaspoon
         = "teaspoons"
+        / "teaspoon(s)"
         / "teaspoon"
+        / "teasps."
+        / "teasps"
+        / "teasp."
+        / "teasp"
         / "tsp."
         / "tsp"
         / "t."
@@ -274,44 +304,63 @@ class Ingreedy(NodeVisitor):
 
         gram
         = "grams"
+        / "gram(s)"
         / "gram"
         / "gr."
         / "gr"
+        / "G."
+        / "G"
         / "g."
         / "g"
 
         joule
         = "joules"
+        / "joule(s)"
         / "joule"
         / "j"
 
         kilogram
         = "kilograms"
+        / "kilogram(s)"
         / "kilogram"
+        / "KG."
+        / "KG"
+        / "Kg."
+        / "Kg"
         / "kg."
         / "kg"
 
         kilojoule
         = "kilojoules"
+        / "kilojoule(s)"
         / "kilojoule"
         / "kJ"
         / "kj"
 
         liter
         = "liters"
+        / "liter(s)"
         / "liter"
+        / "L."
+        / "L"
         / "l."
         / "l"
 
         milligram
         = "milligrams"
+        / "milligram(s)"
         / "milligram"
+        / "mgs."
+        / "mgs"
         / "mg."
         / "mg"
 
         milliliter
         = "milliliters"
+        / "milliliter(s)"
         / "milliliter"
+        / "mls."
+        / "mls"
         / "ml."
         / "ml"
 
@@ -320,6 +369,13 @@ class Ingreedy(NodeVisitor):
         / handful
         / pinch
         / touch
+        / stick
+        / punnet
+        / head
+        
+        head
+        = "heads"
+        / "head"
 
         abbreviated_unit
         = letter letter letter?
@@ -339,6 +395,17 @@ class Ingreedy(NodeVisitor):
         touch
         = "touches"
         / "touch"
+
+        stick
+        = "sticks"
+        / "stick(s)"
+        / "stick"
+
+        punnet
+        = "punnetts"
+        / "punnett"
+        / "punnets"
+        / "punnet"
 
         number = written_number break
 
